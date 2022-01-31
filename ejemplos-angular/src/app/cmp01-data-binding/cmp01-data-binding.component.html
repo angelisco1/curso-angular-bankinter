@@ -1,0 +1,31 @@
+<h2>Data Binding</h2>
+
+<h3>String Interpolation</h3>
+<p>Bienvenid@ {{nombre}}</p>
+<p>Bienvenid@ {{getNombreCompleto()}}</p>
+<p>Bienvenid@ {{nombre ? getNombreCompleto() : 'Mundo'}}</p>
+
+<h3>Property Binding</h3>
+<input type="text" [placeholder]="nombre">
+<input type="text" [placeholder]="getNombreCompleto()">
+<img [src]="logoAngular" width="100" alt="Logo de {{nombreLogo}}">
+<img [src]="logoAngular" width="100" [alt]="textoAlternativo">
+<!-- <img [src]="logoAngular" width="100" alt="{{textoAlternativo}}"> -->
+
+<h3>Event Binding</h3>
+<button type="button" (click)="saludar()">Saludame</button>
+
+<div (click)="mostrarPulsacion('Se ha pulsado en la caja 1')">
+  Caja 1
+  <div (click)="mostrarPulsacion('Se ha pulsado en la caja 2', $event)">
+    Caja 2
+  </div>
+</div>
+
+<input type="text" (change)="cambiarNombre($event)">
+
+<h3>Two Way Data Binding</h3>
+
+<input type="text" [(ngModel)]="nombre">
+
+<input type="text">
