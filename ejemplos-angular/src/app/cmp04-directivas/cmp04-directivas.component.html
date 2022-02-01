@@ -1,0 +1,77 @@
+<h2>Directivas</h2>
+
+<h3>De atributo</h3>
+
+<p [ngClass]="{fondoNegro: true, letraNaranja: letraNaranjaActivada}">Un párrafo con la letra naranja y el fondo negro</p>
+
+<button type="button" (click)="toggleLetraNaranja()">Ocultar letras</button>
+
+<p [ngStyle]="{color: colorSeleccionado}">El color de la letra va cambiando</p>
+<input type="color" [(ngModel)]="colorSeleccionado">
+
+
+<h3>Estructurales</h3>
+
+<!-- <p [hidden]="darkMode">Se muestra</p> -->
+
+<!-- <button type="button" *ngIf="darkMode" (click)="toggleDarkMode()">Activar light mode</button> -->
+<!-- <button type="button" *ngIf="!darkMode" (click)="toggleDarkMode()">Activar dark mode</button> -->
+
+<!--
+<button type="button" *ngIf="darkMode; else btnDarkMode1" (click)="toggleDarkMode()">Activar light mode</button>
+
+<ng-template #btnDarkMode1>
+  <button type="button" (click)="toggleDarkMode()">Activar dark mode</button>
+</ng-template> -->
+
+<div *ngIf="darkMode; then btnLightMode2 else btnDarkMode2"></div>
+
+<ng-template #btnLightMode2>
+  <button type="button" (click)="toggleDarkMode()">Activar light mode</button>
+</ng-template>
+
+<ng-template #btnDarkMode2>
+  <button type="button" (click)="toggleDarkMode()">Activar dark mode</button>
+</ng-template>
+
+<app-sugus *ngFor="let sugus of listaSugus; let pos = index; let esPrimero = first; let esUltimo = last; let esPar = even; let esImpar = odd; let total = count" [color]="sugus.color" [sabor]="sugus.sabor + pos"></app-sugus>
+
+<button type="button" (click)="addSugus()">Añadir sugus de naranja</button>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Nº</th>
+      <th>Concepto</th>
+      <th>Gasto</th>
+      <th>Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let gasto of listaGastos; let pos = index; let esPar = even; let primero = first; let ultimo = last;"
+      [ngClass]="{filaPar: esPar, filaImpar: !esPar, primeraFila: primero, ultimaFila: ultimo}"
+    >
+      <td>{{pos + 1}}</td>
+      <td>{{gasto.concepto}}</td>
+      <td>{{gasto.gasto}}</td>
+      <td>{{gasto.fecha}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<select name="lenguajes" id="lenguajes" [(ngModel)]="lenguajeSeleccionado">
+  <option *ngFor="let lang of listaLenguajes" [value]="lang">{{lang}}</option>
+  <option value="italian">italian</option>
+</select>
+
+<div [ngSwitch]="lenguajeSeleccionado">
+  <ng-container *ngFor="let lang of listaLenguajes">
+    <p *ngSwitchCase="lang">El lenguaje seleccionado es {{lang}}</p>
+  </ng-container>
+  <!-- <p *ngSwitchCase="'spanish'">El lenguaje seleccionado es spanish</p>
+  <p *ngSwitchCase="'english'">El lenguaje seleccionado es english</p>
+  <p *ngSwitchCase="'french'">El lenguaje seleccionado es french</p> -->
+  <p *ngSwitchDefault>El lenguaje seleccionado es otro</p>
+</div>

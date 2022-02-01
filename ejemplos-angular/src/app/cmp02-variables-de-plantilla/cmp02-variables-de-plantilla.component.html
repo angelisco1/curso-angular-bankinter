@@ -1,0 +1,11 @@
+<h2>Variables de plantilla (referencias)</h2>
+
+<input type="text" #inputMsg>
+<button type="button" (click)="mostrar(inputMsg)">Mostrar mensaje</button>
+
+<video src="assets/video.mp4" width="200" controls #videoRef></video>
+
+<button type="button" (click)="play(videoRef)">Play</button>
+<button type="button" (click)="pause(videoRef)">Pause</button>
+
+<input type="range" min="0" max="100" (input)="cambiarVolumen(videoRef, $event)">

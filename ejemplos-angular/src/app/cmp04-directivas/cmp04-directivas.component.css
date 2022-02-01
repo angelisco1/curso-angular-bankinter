@@ -1,0 +1,28 @@
+.fondoNegro {
+  background-color: black;
+}
+
+.letraNaranja {
+  color: orange;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.filaPar {
+  background-color: lightgray;
+}
+
+.filaImpar {
+  background-color: black;
+  color: white;
+}
+
+.primeraFila {
+  border-top: 1px solid orange;
+}
+
+.ultimaFila {
+  border-bottom: 1px solid orange;
+}
