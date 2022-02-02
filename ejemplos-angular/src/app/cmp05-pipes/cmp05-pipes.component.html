@@ -1,0 +1,40 @@
+<h2>Pipes</h2>
+<!--
+<div>
+  <h4>{{producto.nombre}}</h4>
+  <p>Precio: {{producto.precio}}</p>
+  <p>Fecha: {{producto.fecha}}</p>
+  <p>{{producto.descripcion}}</p>
+  <p>{{producto.caracteristicas}}</p>
+</div> -->
+
+<div>
+  <h4>{{producto.nombre | titlecase}}</h4>
+  <p>Precio: {{producto.precio | currency:'EUR'}}</p>
+  <p>Fecha: {{producto.fecha | date:'dd/MM/yy'}}</p>
+  <p>{{producto.descripcion | slice:0:150}}...</p>
+  <pre>{{producto.caracteristicas | json}}</pre>
+</div>
+<!--
+<p>{{numero | doble}}</p>
+<p>{{numero | doble:3}}</p>
+
+
+<p>{{producto.descripcion | ocultarPalabras:['amet', 'ad', 'lorem']}}</p>
+<p>{{producto.descripcion | ocultarPalabras:['amet', 'ad', 'lorem']:'-'}}</p> -->
+
+<!-- 'Lorem ipsum dolor sit, **** consectetur **ipisicing elit. Alias ipsa aut architecto maiores. Cumque accusantium repellendus, architecto neque veniam magnam obcaecati **** sequi, voluptatem ** voluptatibus molestias in delectus iusto.' -->
+
+
+<input type="text" (change)="addMascota($event)">
+<ul>
+  <li *ngFor="let mascota of mascotas">{{mascota}}</li>
+</ul>
+
+
+<input type="text" [(ngModel)]="txtFiltro">
+<ul>
+  <li *ngFor="let mascota of mascotas | filtro:txtFiltro">{{mascota}}</li>
+</ul>
+
+<p>Mensaje: {{promesaMsg | async}}</p>

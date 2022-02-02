@@ -10,6 +10,11 @@
 <input type="color" [(ngModel)]="colorSeleccionado">
 
 
+<p appMarcar>Este texto se marca de amarillo</p>
+<p appMarcar="blue">Este texto se marca de azul</p>
+<p appMarcar="orange">Este texto se marca de naranja</p>
+
+
 <h3>Estructurales</h3>
 
 <!-- <p [hidden]="darkMode">Se muestra</p> -->
@@ -70,8 +75,21 @@
   <ng-container *ngFor="let lang of listaLenguajes">
     <p *ngSwitchCase="lang">El lenguaje seleccionado es {{lang}}</p>
   </ng-container>
+  <!-- <div *ngFor="let lang of listaLenguajes">
+    <p *ngSwitchCase="lang">El lenguaje seleccionado es {{lang}}</p>
+  </div> -->
   <!-- <p *ngSwitchCase="'spanish'">El lenguaje seleccionado es spanish</p>
   <p *ngSwitchCase="'english'">El lenguaje seleccionado es english</p>
   <p *ngSwitchCase="'french'">El lenguaje seleccionado es french</p> -->
   <p *ngSwitchDefault>El lenguaje seleccionado es otro</p>
 </div>
+
+<!--
+<ng-container *ngIf="condicion">
+  <button >Btn 1</button>
+  <p>Un p</p>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+  </ul>
+</ng-container> -->

@@ -1,0 +1,25 @@
+<h3>De plantilla</h3>
+
+<form (ngSubmit)="guardar(form)" #form="ngForm">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" [ngModel]="datosIniciales.username" required #usernameField="ngModel">
+    <app-error-form *ngIf="usernameField.invalid && usernameField.dirty" [errores]="usernameField.errors"></app-error-form>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" [ngModel]="datosIniciales.email" required #emailField="ngModel">
+    <app-error-form *ngIf="emailField.invalid && emailField.dirty" [errores]="emailField.errors"></app-error-form>
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" [ngModel]="datosIniciales.password" required minlength="8" #pwField="ngModel">
+    <app-error-form *ngIf="pwField.invalid && pwField.dirty" [errores]="pwField.errors"></app-error-form>
+  </div>
+  <div>
+    <label for="confirmarPw">Confirmar password</label>
+    <input type="password" id="confirmarPw" name="confirmarPw" [ngModel]="datosIniciales.confirmarPw" required #confirmarPwField="ngModel">
+    <app-error-form *ngIf="confirmarPwField.invalid && confirmarPwField.dirty" [errores]="confirmarPwField.errors"></app-error-form>
+  </div>
+  <button type="submit" [disabled]="form.invalid">Registrate</button>
+</form>
