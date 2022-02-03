@@ -1,0 +1,14 @@
+<div>
+  <h3>{{servicio}}</h3>
+  <p>Precio: {{precio | currency:'EUR'}}</p>
+
+  <ng-container *ngIf="activa; else subsInactiva">
+    <p>El próximo pago se realizará el: {{fechaProximoPago | date:'hh:mm:ss'}}</p>
+    <button type="button" (click)="cancelar()">Cancelar suscripción</button>
+  </ng-container>
+
+  <ng-template #subsInactiva>
+    <p>El próximo pago se realizará el: --:--:--</p>
+    <button type="button" (click)="activar()">Activar suscripción</button>
+  </ng-template>
+</div>

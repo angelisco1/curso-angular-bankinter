@@ -1,0 +1,10 @@
+<h2>Observables</h2>
+
+<button type="button" (click)="toggleFecha()">Mostrar/ocultar fecha actual</button>
+
+<app-fecha-actual *ngIf="mostrarFecha"></app-fecha-actual>
+
+<app-suscripcion
+  servicio="Angularflix"
+  [precio]="5.99"
+></app-suscripcion>

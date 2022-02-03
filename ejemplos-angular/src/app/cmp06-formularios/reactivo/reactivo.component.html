@@ -1,21 +1,29 @@
 <h3>Reactivo</h3>
 
-<form>
+<form [formGroup]="form" (ngSubmit)="guardar()">
   <div>
     <label for="username">Username</label>
-    <input type="text" id="username">
+    <input type="text" id="username" formControlName="username">
+
+    <app-error-form *ngIf="getPintarErrores('username')" [errores]="getErrors('username')"></app-error-form>
   </div>
   <div>
     <label for="email">Email</label>
-    <input type="text" id="email">
+    <input type="text" id="email" formControlName="email">
+
+    <app-error-form *ngIf="getPintarErrores('email')" [errores]="getErrors('email')"></app-error-form>
   </div>
   <div>
     <label for="password">Password</label>
-    <input type="password" id="password">
+    <input type="password" id="password" formControlName="password">
+
+    <app-error-form *ngIf="getPintarErrores('password')" [errores]="getErrors('password')"></app-error-form>
   </div>
   <div>
     <label for="confirmarPw">Confirmar password</label>
-    <input type="password" id="confirmarPw">
+    <input type="password" id="confirmarPw" formControlName="confirmarPw">
+
+    <app-error-form *ngIf="getPintarErrores('confirmarPw')" [errores]="getErrors('confirmarPw')"></app-error-form>
   </div>
-  <button type="submit"></button>
+  <button type="submit" [disabled]="form.invalid">Guardar</button>
 </form>
