@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { MiPrimerComponenteComponent } from './mi-primer-componente/mi-primer-componente.component';
@@ -29,6 +29,15 @@ import { FechaActualComponent } from './cmp08-observables/fecha-actual/fecha-act
 import { SuscripcionComponent } from './cmp08-observables/suscripcion/suscripcion.component';
 import { Cmp09HttpComponent } from './cmp09-http/cmp09-http.component';
 import { TareaComponent } from './cmp09-http/tarea/tarea.component';
+import { AuthInterceptor } from './cmp09-http/interceptors/auth.interceptor';
+import { Cmp10RoutingComponent } from './cmp10-routing/cmp10-routing.component';
+import { UsuariosComponent } from './cmp10-routing/usuarios/usuarios.component';
+import { NuevoUsuarioComponent } from './cmp10-routing/nuevo-usuario/nuevo-usuario.component';
+import { InfoUsuarioComponent } from './cmp10-routing/info-usuario/info-usuario.component';
+import { Error404Component } from './cmp10-routing/error404/error404.component';
+import { RoutingModule } from './cmp10-routing/app.routes';
+import { Cmp11ModulosComponent } from './cmp11-modulos/cmp11-modulos.component';
+import { TarjetasCreditoModule } from './tarjetas-credito/tarjetas-credito.module';
 
 @NgModule({
   declarations: [
@@ -58,14 +67,25 @@ import { TareaComponent } from './cmp09-http/tarea/tarea.component';
     SuscripcionComponent,
     Cmp09HttpComponent,
     TareaComponent,
+    Cmp10RoutingComponent,
+    UsuariosComponent,
+    NuevoUsuarioComponent,
+    InfoUsuarioComponent,
+    Error404Component,
+    Cmp11ModulosComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RoutingModule,
+    TarjetasCreditoModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: LogInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

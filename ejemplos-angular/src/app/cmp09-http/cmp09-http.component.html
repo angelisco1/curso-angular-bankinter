@@ -1,1 +1,15 @@
-<p>cmp09-http works!</p>
+<h2>Peticiones HTTP</h2>
+
+<form [formGroup]="formTarea" (ngSubmit)="guardar()">
+  <div>
+    <label for="tarea">Tarea</label>
+    <input type="text" id="tarea" formControlName="titulo">
+  </div>
+  <button type="submit" [disabled]="formTarea.invalid">Crear tarea</button>
+</form>
+
+<app-tarea
+  *ngFor="let t of listaTareas"
+  [tarea]="t"
+  (tareaCompletada)="actualizarTareas($event)"
+></app-tarea>

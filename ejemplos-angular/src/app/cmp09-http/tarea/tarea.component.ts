@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Tarea } from '../tarea';
+import { TareasService } from '../tareas.service';
 
 @Component({
   selector: 'app-tarea',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tarea.component.css']
 })
 export class TareaComponent implements OnInit {
+  @Input('tarea') t: Tarea = new Tarea('')
+  @Output() tareaCompletada: EventEmitter<Tarea> = new EventEmitter<Tarea>()
 
-  constructor() { }
+  constructor(private tareasS: TareasService) { }
 
   ngOnInit(): void {
   }
 
+  completar() {
+    this.tareasS.completeTarea(this.t)
+      .subscribe((resp: Tarea) => {
+        // console.log(resp)
+        this.tareaCompletada.emit(resp)
+      })
+  }
 }
